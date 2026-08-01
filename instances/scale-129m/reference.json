@@ -1,0 +1,12 @@
+{
+  "instance_id": "scale-129m",
+  "schema_version": "1.0",
+  "benchmark_version": "1.0.0",
+  "reference_type": "unsolved",
+  "objective": "Total raw voxel cost of a portal-rooted, monotonically descending network reaching every production zone, with edge weight w(u,v) = (cost_grid[v] + excavation_rate_per_m) * effective_length_m(u,v) over the 26-neighbourhood. Excludes buildability post-processing, operating cost and portal establishment.",
+  "reference_cost": null,
+  "reference_cost_buildable": null,
+  "best_topology": null,
+  "note": "No reference solution. At 129,150,000 voxels (114,365,849 passable) a multi-source Dijkstra over the 26-neighbour graph needs roughly 22 GB for the CSR structure alone, beyond the machine used to build this suite. The grid, terminals and cost model are fully specified, so this instance stands as an open scaling frontier: the first valid solution submitted becomes its best-known reference. score.py reports submissions for this instance without a gap.",
+  "created_utc": "2026-08-01T20:03:13Z"
+}

@@ -1,0 +1,434 @@
+{
+  "instance_id": "portal-north",
+  "schema_version": "1.0",
+  "benchmark_version": "1.0.0",
+  "reference_type": "best_known",
+  "objective": "Total raw voxel cost of a portal-rooted, monotonically descending network reaching every production zone, with edge weight w(u,v) = (cost_grid[v] + excavation_rate_per_m) * effective_length_m(u,v) over the 26-neighbourhood. Excludes buildability post-processing, operating cost and portal establishment.",
+  "reference_cost": 2822644.2109,
+  "reference_cost_buildable": 10178574.7305,
+  "best_topology": "chained_fan",
+  "best_topology_buildable": "chained_fan",
+  "lower_bound": {
+    "value": 2306028.9889457677,
+    "method": "pairwise_divergence",
+    "valid": true,
+    "note": "Pairwise-divergence bound: for the binding terminal pair [2, 3], min over all nodes v of d(portal,v) + d(v,zone_i) + d(v,zone_j). Valid because the two root-to-terminal paths in any arborescence separate at some v and are arc-disjoint thereafter. Arcs are priced at (min(cost[u], cost[v]) + excavation_rate) * length so the bound stays valid regardless of which traversal direction the reference solver charged for a segment. The bound applies to all seven topology families: each produces a feasible portal-rooted subgraph over this arc set, and the families that charge a shared ramp once per branch report at least their subgraph cost.",
+    "components": {
+      "max_terminal_shortest_path": 1676464.4039,
+      "pairwise_divergence": 2306028.9889
+    },
+    "runtime_s": 3.13
+  },
+  "gap_to_lower_bound": 0.224028,
+  "exactness_note": "The cheapest family (chained_fan) uses a heuristic search, so reference_cost is a best-known bound and may be improvable. Exact-search families on this instance were still independently verified; see per_family[].exactness_check.",
+  "per_family": [
+    {
+      "family": "chained_fan",
+      "search": "heuristic",
+      "cost": 2822644.2109,
+      "cost_buildable": 10178574.7305,
+      "total_length_m": 506.656,
+      "junctions_voxel": [
+        [
+          56,
+          51,
+          64
+        ],
+        [
+          69,
+          42,
+          51
+        ],
+        [
+          62,
+          42,
+          40
+        ],
+        [
+          68,
+          50,
+          28
+        ]
+      ],
+      "junctions_world_m": [
+        [
+          282.5,
+          257.5,
+          322.5
+        ],
+        [
+          347.5,
+          212.5,
+          257.5
+        ],
+        [
+          312.5,
+          212.5,
+          202.5
+        ],
+        [
+          342.5,
+          252.5,
+          142.5
+        ]
+      ],
+      "support_class_length_m": {
+        "Exceptionally poor (Q<0.04): steel sets + shotcrete + spiling": 50.372,
+        "Extremely poor (Q 0.04-0.10): heavy systematic bolt+mesh+shotcrete": 48.534,
+        "Very poor (Q 0.10-0.34): systematic bolt+mesh+shotcrete": 293.13,
+        "Poor (Q 0.34-1.18): systematic bolting + shotcrete": 114.62
+      },
+      "buildable_summary": {
+        "ramp_length_m": 1464.2424962650873,
+        "worst_grade": 0.20000000000002807,
+        "worst_min_radius_m": 27.01978298292362,
+        "n_spiral_ramps": 4,
+        "method": "geometric"
+      },
+      "topology_label": "chained_fan (4 levels)"
+    },
+    {
+      "family": "single_junction",
+      "search": "exact",
+      "cost": 3538500.6875,
+      "cost_buildable": 15670811.0933,
+      "total_length_m": 662.709,
+      "junctions_voxel": [
+        [
+          56,
+          44,
+          63
+        ]
+      ],
+      "junctions_world_m": [
+        [
+          282.5,
+          222.5,
+          317.5
+        ]
+      ],
+      "support_class_length_m": {
+        "Exceptionally poor (Q<0.04): steel sets + shotcrete + spiling": 31.463,
+        "Extremely poor (Q 0.04-0.10): heavy systematic bolt+mesh+shotcrete": 137.905,
+        "Very poor (Q 0.10-0.34): systematic bolt+mesh+shotcrete": 292.757,
+        "Poor (Q 0.34-1.18): systematic bolting + shotcrete": 148.158,
+        "Fair (Q 1.18-6.0): spot bolting": 52.426
+      },
+      "buildable_summary": {
+        "ramp_length_m": 2413.222805569171,
+        "worst_grade": 0.20000000000002305,
+        "worst_min_radius_m": 28.26925114756637,
+        "n_spiral_ramps": 4,
+        "method": "geometric"
+      },
+      "topology_label": "single_junction",
+      "exactness_check": {
+        "performed": true,
+        "independent_argmin_matches": true,
+        "junction_voxel_matches": true,
+        "max_rel_cost_delta": 4.7418422721124925e-08,
+        "independent_cost": 3538500.5197,
+        "method": "independent float64 CSR graph + scipy.sparse.csgraph.dijkstra + independent argmin; shares no code or distance fields with the reference solver"
+      }
+    },
+    {
+      "family": "sequential_ramp",
+      "search": "heuristic",
+      "cost": 3543292.75,
+      "cost_buildable": 10621522.4725,
+      "total_length_m": 624.974,
+      "junctions_voxel": [],
+      "junctions_world_m": [],
+      "support_class_length_m": {
+        "Exceptionally poor (Q<0.04): steel sets + shotcrete + spiling": 102.317,
+        "Extremely poor (Q 0.04-0.10): heavy systematic bolt+mesh+shotcrete": 37.802,
+        "Very poor (Q 0.10-0.34): systematic bolt+mesh+shotcrete": 316.951,
+        "Poor (Q 0.34-1.18): systematic bolting + shotcrete": 167.905
+      },
+      "buildable_summary": {
+        "ramp_length_m": 1589.330186806587,
+        "worst_grade": 0.20000000000002627,
+        "worst_min_radius_m": 26.964061258525014,
+        "n_spiral_ramps": 4,
+        "method": "geometric"
+      },
+      "topology_label": "sequential_ramp"
+    },
+    {
+      "family": "two_branch",
+      "search": "exact",
+      "cost": 3624784.0625,
+      "cost_buildable": 15069191.8633,
+      "total_length_m": 691.906,
+      "junctions_voxel": [
+        [
+          54,
+          55,
+          64
+        ],
+        [
+          67,
+          44,
+          51
+        ]
+      ],
+      "junctions_world_m": [
+        [
+          272.5,
+          277.5,
+          322.5
+        ],
+        [
+          337.5,
+          222.5,
+          257.5
+        ]
+      ],
+      "support_class_length_m": {
+        "Exceptionally poor (Q<0.04): steel sets + shotcrete + spiling": 43.052,
+        "Extremely poor (Q 0.04-0.10): heavy systematic bolt+mesh+shotcrete": 53.534,
+        "Very poor (Q 0.10-0.34): systematic bolt+mesh+shotcrete": 367.415,
+        "Poor (Q 0.34-1.18): systematic bolting + shotcrete": 200.834,
+        "Fair (Q 1.18-6.0): spot bolting": 27.071
+      },
+      "buildable_summary": {
+        "ramp_length_m": 2208.5173596460068,
+        "worst_grade": 0.2000000000000303,
+        "worst_min_radius_m": 26.964061258525014,
+        "n_spiral_ramps": 4,
+        "method": "geometric"
+      },
+      "topology_label": "two_branch",
+      "exactness_check": {
+        "performed": true,
+        "independent_argmin_matches": true,
+        "junction_voxel_matches": true,
+        "max_rel_cost_delta": 2.118995840374682e-08,
+        "independent_cost": 3624783.9857,
+        "method": "independent float64 CSR graph + scipy.sparse.csgraph.dijkstra + independent argmin; shares no code or distance fields with the reference solver",
+        "note": "Exhaustive over all 3 consecutive level partitions."
+      }
+    },
+    {
+      "family": "three_branch",
+      "search": "exact",
+      "cost": 4342539.1875,
+      "cost_buildable": 18273861.4786,
+      "total_length_m": 879.554,
+      "junctions_voxel": [
+        [
+          54,
+          55,
+          64
+        ],
+        [
+          83,
+          44,
+          52
+        ],
+        [
+          62,
+          44,
+          39
+        ]
+      ],
+      "junctions_world_m": [
+        [
+          272.5,
+          277.5,
+          322.5
+        ],
+        [
+          417.5,
+          222.5,
+          262.5
+        ],
+        [
+          312.5,
+          222.5,
+          197.5
+        ]
+      ],
+      "support_class_length_m": {
+        "Exceptionally poor (Q<0.04): steel sets + shotcrete + spiling": 68.158,
+        "Extremely poor (Q 0.04-0.10): heavy systematic bolt+mesh+shotcrete": 34.873,
+        "Very poor (Q 0.10-0.34): systematic bolt+mesh+shotcrete": 307.665,
+        "Poor (Q 0.34-1.18): systematic bolting + shotcrete": 421.913,
+        "Fair (Q 1.18-6.0): spot bolting": 46.945
+      },
+      "buildable_summary": {
+        "ramp_length_m": 2666.5514923228757,
+        "worst_grade": 0.2000000000000264,
+        "worst_min_radius_m": 25.406798583738862,
+        "n_spiral_ramps": 4,
+        "method": "geometric"
+      },
+      "topology_label": "three_branch",
+      "exactness_check": {
+        "performed": true,
+        "independent_argmin_matches": true,
+        "junction_voxel_matches": true,
+        "max_rel_cost_delta": 8.501529873527623e-09,
+        "independent_cost": 4342539.1506,
+        "method": "independent float64 CSR graph + scipy.sparse.csgraph.dijkstra + independent argmin; shares no code or distance fields with the reference solver",
+        "note": "Exhaustive over all 3 consecutive level partitions."
+      }
+    },
+    {
+      "family": "hybrid_chained_fan_branch",
+      "search": "heuristic",
+      "cost": 4994305.1875,
+      "cost_buildable": 21405503.3701,
+      "total_length_m": 940.001,
+      "junctions_voxel": [
+        [
+          56,
+          51,
+          64
+        ],
+        [
+          68,
+          44,
+          52
+        ],
+        [
+          50,
+          36,
+          40
+        ],
+        [
+          70,
+          63,
+          28
+        ]
+      ],
+      "junctions_world_m": [
+        [
+          282.5,
+          257.5,
+          322.5
+        ],
+        [
+          342.5,
+          222.5,
+          262.5
+        ],
+        [
+          252.5,
+          182.5,
+          202.5
+        ],
+        [
+          352.5,
+          317.5,
+          142.5
+        ]
+      ],
+      "support_class_length_m": {
+        "Exceptionally poor (Q<0.04): steel sets + shotcrete + spiling": 106.941,
+        "Extremely poor (Q 0.04-0.10): heavy systematic bolt+mesh+shotcrete": 30.731,
+        "Very poor (Q 0.10-0.34): systematic bolt+mesh+shotcrete": 480.307,
+        "Poor (Q 0.34-1.18): systematic bolting + shotcrete": 274.829,
+        "Fair (Q 1.18-6.0): spot bolting": 47.194
+      },
+      "buildable_summary": {
+        "ramp_length_m": 3346.218470629333,
+        "worst_grade": 0.20000000000003892,
+        "worst_min_radius_m": 26.716250604793824,
+        "n_spiral_ramps": 4,
+        "method": "geometric"
+      },
+      "topology_label": "hybrid_chained_fan (2L chain + 2L branch)"
+    },
+    {
+      "family": "sublevel_fan",
+      "search": "exact",
+      "cost": 5354651.75,
+      "cost_buildable": 24237554.1938,
+      "total_length_m": 1088.409,
+      "junctions_voxel": [
+        [
+          54,
+          55,
+          64
+        ],
+        [
+          83,
+          44,
+          52
+        ],
+        [
+          50,
+          36,
+          40
+        ],
+        [
+          70,
+          63,
+          28
+        ]
+      ],
+      "junctions_world_m": [
+        [
+          272.5,
+          277.5,
+          322.5
+        ],
+        [
+          417.5,
+          222.5,
+          262.5
+        ],
+        [
+          252.5,
+          182.5,
+          202.5
+        ],
+        [
+          352.5,
+          317.5,
+          142.5
+        ]
+      ],
+      "support_class_length_m": {
+        "Exceptionally poor (Q<0.04): steel sets + shotcrete + spiling": 73.64,
+        "Extremely poor (Q 0.04-0.10): heavy systematic bolt+mesh+shotcrete": 13.66,
+        "Very poor (Q 0.10-0.34): systematic bolt+mesh+shotcrete": 478.236,
+        "Poor (Q 0.34-1.18): systematic bolting + shotcrete": 440.806,
+        "Fair (Q 1.18-6.0): spot bolting": 82.067
+      },
+      "buildable_summary": {
+        "ramp_length_m": 3793.2521621661253,
+        "worst_grade": 0.20000000000003892,
+        "worst_min_radius_m": 26.716250604793824,
+        "n_spiral_ramps": 4,
+        "method": "geometric"
+      },
+      "topology_label": "sublevel_fan (4 levels)",
+      "exactness_check": {
+        "performed": true,
+        "independent_argmin_matches": true,
+        "junction_voxel_matches": true,
+        "max_rel_cost_delta": 3.164457946422289e-08,
+        "independent_cost": 5354651.5806,
+        "method": "independent float64 CSR graph + scipy.sparse.csgraph.dijkstra + independent argmin; shares no code or distance fields with the reference solver"
+      }
+    }
+  ],
+  "environment": {
+    "solver": "MineOptimizer WP3 (wp3_steiner/run_steiner_poly.py)",
+    "solver_commit": "3545036",
+    "flood_engine": "scipy",
+    "opex_in_edge_weights": false,
+    "lattice_refinement": false,
+    "buildable_method": "geometric (deterministic)",
+    "cell_size_m": 5.0,
+    "python": "3.13.13",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cpu_count": 12
+  },
+  "solver_runtime_s": 13.67,
+  "created_utc": "2026-08-01T19:56:08Z"
+}
