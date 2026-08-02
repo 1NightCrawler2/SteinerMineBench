@@ -1,15 +1,12 @@
 # Citation metadata for SteinerMineBench.
 #
-# The dataset DOI is minted by Zenodo when a release is tagged on GitHub. Until
-# then the `doi:` key below is absent rather than a dummy value, so this file is
-# always valid CFF. After minting, add the CONCEPT DOI (the version-independent
-# one, not the per-version DOI) as:
+# `doi:` below is the Zenodo CONCEPT DOI, which always resolves to the newest
+# version -- that is the one to cite. The per-version DOI for v1.0.0 is listed
+# under `identifiers:` for anyone who needs to pin an exact snapshot.
 #
-#     doi: "10.5281/zenodo.XXXXXXX"
-#
-# The paper is in preparation; fill in `journal` and add `doi` to the
-# preferred-citation block once it is published. Editing Zenodo record metadata
-# after minting does not change the DOI.
+# The paper is in preparation; fill in `journal` and add its `doi` to the
+# preferred-citation block once published. Editing Zenodo record metadata after
+# minting does not change the DOI, so both can be updated later.
 #
 # `python validate.py --publication` re-checks that no unfilled template markers
 # have crept back into this file, .zenodo.json or the README.
@@ -36,13 +33,22 @@ version: "1.0.0"
 date-released: "2026-08-01"
 license: CC-BY-4.0
 license-url: "https://creativecommons.org/licenses/by/4.0/"
+doi: "10.5281/zenodo.21747902"
+
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21747902"
+    description: "Concept DOI - always resolves to the latest version. Cite this one."
+  - type: doi
+    value: "10.5281/zenodo.21747903"
+    description: "Version DOI for the v1.0.0 snapshot."
 
 repository-code: "https://github.com/1NightCrawler2/SteinerMineBench"
-url: "https://github.com/1NightCrawler2/SteinerMineBench"
+url: "https://doi.org/10.5281/zenodo.21747902"
 
 authors:
-  - family-names: "Hasozdemir"
-    given-names: "Kursat"
+  - family-names: "Hasözdemir"
+    given-names: "Kürşat"
     orcid: "https://orcid.org/0000-0002-2710-9562"
     affiliation: "Department of Mining Engineering, Istanbul Technical University"
     email: "hasozdemir@itu.edu.tr"
@@ -67,8 +73,8 @@ preferred-citation:
     Optimisation of Underground Ramp Networks for Minimum Excavation and
     Support Cost
   authors:
-    - family-names: "Hasozdemir"
-      given-names: "Kursat"
+    - family-names: "Hasözdemir"
+      given-names: "Kürşat"
       orcid: "https://orcid.org/0000-0002-2710-9562"
       affiliation: "Department of Mining Engineering, Istanbul Technical University"
   journal: "In preparation"

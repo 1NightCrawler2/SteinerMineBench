@@ -1,5 +1,9 @@
 # SteinerMineBench
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21747902.svg)](https://doi.org/10.5281/zenodo.21747902)
+[![Data licence: CC BY 4.0](https://img.shields.io/badge/data-CC--BY--4.0-blue.svg)](LICENSE)
+[![Code licence: MIT](https://img.shields.io/badge/code-MIT-green.svg)](LICENSE-CODE)
+
 A citable benchmark suite for **geotechnically-weighted Steiner trees on 3-D voxel grids** — the
 underground mine ramp network design problem.
 
@@ -376,13 +380,29 @@ stays pure geotechnical support cost. WP1 (kriging) and WP2 (A*) are bypassed en
 
 Please cite the dataset:
 
-> Hasozdemir, K. (2026). *SteinerMineBench: a benchmark suite for
-> geotechnically-weighted Steiner trees on voxel grids* (Version 1.0.0)
-> [Data set]. Zenodo.
+> Hasözdemir, K. (2026). *SteinerMineBench: a benchmark suite for
+> geotechnically-weighted Steiner trees on voxel grids* [Data set]. Zenodo.
+> https://doi.org/10.5281/zenodo.21747902
+
+```bibtex
+@dataset{hasozdemir_steinerminebench_2026,
+  author    = {Hasözdemir, Kürşat},
+  title     = {{SteinerMineBench}: a benchmark suite for
+               geotechnically-weighted {Steiner} trees on voxel grids},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21747902},
+  url       = {https://doi.org/10.5281/zenodo.21747902}
+}
+```
+
+**Which DOI to use.** `10.5281/zenodo.21747902` is the **concept DOI** — it
+always resolves to the newest version, and it is the one to cite. If you need to
+pin the exact snapshot your results were produced against, use the version DOI
+[`10.5281/zenodo.21747903`](https://doi.org/10.5281/zenodo.21747903) for v1.0.0.
 
 Machine-readable metadata is in `CITATION.cff`, so GitHub's **Cite this
-repository** button and most reference managers will pick it up directly. The
-DOI is added there once the first release is archived.
+repository** button and most reference managers pick it up directly.
 
 The accompanying paper — *Geotechnically Weighted Steiner Trees on Voxel Grids:
 Rock-Mass-Constrained Optimisation of Underground Ramp Networks for Minimum
